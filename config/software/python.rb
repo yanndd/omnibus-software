@@ -15,7 +15,7 @@
 #
 
 name "python"
-default_version "2.7.5"
+default_version "2.7.8"
 
 dependency "gdbm"
 dependency "ncurses"
@@ -24,7 +24,7 @@ dependency "openssl"
 dependency "bzip2"
 
 source url: "http://python.org/ftp/python/#{version}/Python-#{version}.tgz",
-       md5: 'b4f01a1d0ba0b46b05c73b2ac909b1df'
+       md5: 'd4bca0159acb0b44a781292b5231936f'
 
 relative_path "Python-#{version}"
 
@@ -47,4 +47,7 @@ build do
 
   # Remove unused extension which is known to make healthchecks fail on CentOS 6
   delete "#{install_dir}/embedded/lib/python2.7/lib-dynload/_bsddb.*"
+
+  # Save space
+  delete "#{install_dir}/embedded/lib/python2.7/test"
 end
