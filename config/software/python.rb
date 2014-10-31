@@ -38,10 +38,9 @@ env = {
 build do
   patch :source => "disable_sslv3.patch"
   command ["./configure",
-           "--enable-universalsdk=/",
            "--prefix=#{install_dir}/embedded",
-           "--enable-shared",
            "--with-dbmliborder=gdbm",
+           "--enable-framework",
            '--with-universal-archs="64-bit"'].join(" "), :env => env
   command "make", :env => env
   command "make install", :env => env
