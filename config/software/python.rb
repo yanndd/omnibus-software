@@ -40,6 +40,7 @@ build do
   command ["./configure",
            "--prefix=#{install_dir}/embedded",
            "--with-dbmliborder=gdbm",
+           "--enable-universalsdk",
            "--enable-framework",
            '--with-universal-archs="64-bit"'].join(" "), :env => env
   command "make", :env => env
