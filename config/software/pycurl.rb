@@ -9,7 +9,8 @@ dependency "libgcc" if (Ohai['platform'] == "solaris2" and Omnibus.config.solari
 
 build do
   build_env = {
-    "PATH" => "/#{install_dir}/embedded/bin:#{ENV['PATH']}"
+    "PATH" => "/#{install_dir}/embedded/bin:#{ENV['PATH']}",
+    "ARCHFLAGS" => "-arch x86_64"
   }
   command "#{install_dir}/embedded/bin/pip install -I #{name}==#{version}", :env => build_env
 end
