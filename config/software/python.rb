@@ -31,17 +31,18 @@ source :url => "http://python.org/ftp/python/#{version}/Python-#{version}.tgz",
 relative_path "Python-#{version}"
 
 env = {
-  "CFLAGS" => "-I#{install_dir}/embedded/include -O3 -g -pipe -arch x86_64",
-  "LDFLAGS" => "-Wl,-rpath,#{install_dir}/embedded/lib -L#{install_dir}/embedded/lib -arch x86_64"
+  "CFLAGS" => "-I#{install_dir}/embedded/include -O3 -g -pipe",
+  "LDFLAGS" => "-Wl,-rpath,#{install_dir}/embedded/lib -L#{install_dir}/embedded/lib"
 }
 
 build do
   patch :source => "disable_sslv3.patch"
   command ["./configure",
            "--prefix=#{install_dir}/embedded",
-           "--with-dbmliborder=gdbm",
-           "--enable-framework",
-           '--with-universal-archs="64-bit"'].join(" "), :env => env
+	   "--enable-ipv6",
+	   "--enable-universalsdk=/",
+	   "--with-universal-archs=intel",
+           "--with-dbmliborder=gdbm"].join(" "), :env => env
   command "make", :env => env
   command "make install", :env => env
   command "rm -rf #{install_dir}/embedded/lib/python2.7/test"
