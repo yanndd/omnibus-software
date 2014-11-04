@@ -40,7 +40,7 @@ env = {
 
 build do
   patch :source => 'makefile_take_env_vars.patch'
-  patch :source => 'soname_install_dir.patch' if mac_os_x_mavericks?
+  patch :source => 'soname_install_dir.patch'#fixme do something according to the platform
   command "make PREFIX=#{prefix} VERSION=#{version}", :env => env
   command "make PREFIX=#{prefix} VERSION=#{version} -f Makefile-libbz2_so", :env => env
   command "make install VERSION=#{version} PREFIX=#{prefix}", :env => env
