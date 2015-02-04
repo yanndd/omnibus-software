@@ -1,10 +1,11 @@
-name "httplib2"
-default_version "0.9"
+name "adodbapi"
+default_version "2.6.0.7"
 
 dependency "python"
 dependency "pip"
+dependency "pyro4"
 
 build do
-  license "https://raw.githubusercontent.com/jcgregorio/httplib2/master/LICENSE"
+  license "LGPLv2"
   command "#{install_dir}/embedded/bin/pip install -I --install-option=\"--install-scripts=#{install_dir}/bin\" #{name}==#{version}"
 end

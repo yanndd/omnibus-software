@@ -16,9 +16,7 @@
 #
 
 name "python"
-default_version "2.7.8"
-
-dependency "gdbm"
+default_version "2.7.9"
 dependency "ncurses"
 dependency "zlib"
 dependency "openssl"
@@ -26,7 +24,7 @@ dependency "bzip2"
 dependency "libsqlite3"
 
 source :url => "http://python.org/ftp/python/#{version}/Python-#{version}.tgz",
-       :md5 => 'd4bca0159acb0b44a781292b5231936f'
+       :md5 => '5eebcaa0030dc4061156d3429657fb83'
 
 relative_path "Python-#{version}"
 
@@ -36,13 +34,13 @@ env = {
 }
 
 build do
-  patch :source => "disable_sslv3.patch"
+  license "PSFL"
   command ["./configure",
            "--prefix=#{install_dir}/embedded",
-	   "--enable-ipv6",
-	   "--enable-universalsdk=/",
-	   "--with-universal-archs=intel",
-           "--with-dbmliborder=gdbm"].join(" "), :env => env
+      	   "--enable-ipv6",
+      	   "--enable-universalsdk=/",
+      	   "--with-universal-archs=intel",
+           "--with-dbmliborder="].join(" "), :env => env
   command "make", :env => env
   command "make install", :env => env
   command "rm -rf #{install_dir}/embedded/lib/python2.7/test"
