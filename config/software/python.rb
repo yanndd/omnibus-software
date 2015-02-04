@@ -41,7 +41,7 @@ build do
       	   "--enable-universalsdk=/",
       	   "--with-universal-archs=intel",
            "--with-dbmliborder="].join(" "), :env => env
-  command "make", :env => env
+  command "make -j #{workers}", :env => env
   command "make install", :env => env
   command "rm -rf #{install_dir}/embedded/lib/python2.7/test"
 
