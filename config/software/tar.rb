@@ -11,5 +11,5 @@ relative_path "#{name}-#{version}"
 build do
     command "./configure --prefix=/"
     command "make -j #{workers}"
-    command "sudo make install"
+    command "make install"
 end

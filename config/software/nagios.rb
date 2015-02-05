@@ -57,7 +57,7 @@ build do
   command "bash -c \"find . -name 'Makefile' | xargs sed -i 's:-o opscode-nagios-cmd -g opscode-nagios-cmd:-o $(whoami):g'\""
   command "bash -c \"find . -name 'Makefile' | xargs sed -i 's:-o opscode-nagios -g opscode-nagios:-o $(whoami):g'\""
 
-  command "sudo chown -R $(whoami) /var/opt/opscode/nagios"
+  command "chown -R $(whoami) /var/opt/opscode/nagios"
 
   # build it
   command "make -j #{workers} all", :env => { "LD_RUN_PATH" => "#{install_dir}/embedded/lib" }
@@ -67,7 +67,7 @@ build do
 
   # clean up the install
   command "rm -rf #{install_dir}/embedded/nagios/etc/*"
-  
+
   # ensure the etc directory is avaialable on rebuild from git cache
   command "touch #{install_dir}/embedded/nagios/etc/.gitkeep"
 end
