@@ -6,6 +6,8 @@ env = {
   "GOPATH" => "/var/cache/omnibus/src/datadog-gohai"
 }
 
+always_build true
+
 build do
    license "https://raw.githubusercontent.com/DataDog/gohai/master/LICENSE"
    command "$GOROOT/bin/go get -d -u github.com/DataDog/gohai", :env => env
