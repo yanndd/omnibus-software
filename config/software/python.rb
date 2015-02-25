@@ -39,7 +39,8 @@ python_configure = ["./configure",
 
 if ENV['PKG_TYPE'] == 'dmg'
   python_configure.push('--enable-ipv6',
-                        '--with-universal-archs=intel')
+                        '--with-universal-archs=intel',
+                        '--enable-shared')
 end
 
 python_configure.push("--with-dbmliborder=")
