@@ -8,5 +8,6 @@ build do
   command "echo | "\
   		  "ruby -e \"$(curl -fsSL #{install_url})\" |"\
   		  " echo \"Brew already installed\""
+  command "brew update"
   command "brew doctor"
 end
