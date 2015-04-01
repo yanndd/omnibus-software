@@ -7,7 +7,7 @@ dependency "pip"
 # Otherwise py2app doesn't find supervisor module
 if ENV['PKG_TYPE'] == 'dmg'
 	source :url => "https://github.com/Supervisor/supervisor/archive/#{version}.tar.gz",
-		   :md5 => 'adcf5c45d61f1ded76bab8258a373dfa'
+		   :md5 => '073f1912e8bfe5bf89e84b96495df62e'
 
 	relative_path "supervisor-#{version}"
 
